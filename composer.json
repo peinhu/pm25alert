@@ -24,6 +24,6 @@
         "monolog/monolog": "^1.22"
     },
 	"scripts": {
-        "post-create-project-cmd": "Core\\Script::testTime"
+        "post-create-project-cmd": "Core\\Script::checkTimeZone"
     }
 }
