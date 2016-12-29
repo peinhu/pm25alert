@@ -1,0 +1,26 @@
+{
+    "name": "peinhu/pm25alert",
+    "description": "alert you when PM2.5 index is higher than a certain value",
+    "keywords": ["pm2.5","pm25"],
+    "type": "project",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Payne Hu",
+            "email": "huyang110yahoo@gmail.com",
+            "homepage": "http://www.2ndrenais.com",
+			"role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Core\\": "core/"
+        }
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "phpmailer/phpmailer": "^5.2",
+        "monolog/monolog": "^1.22"
+    }
+}
