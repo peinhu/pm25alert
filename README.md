@@ -1,6 +1,5 @@
 # PM2.5告警
-当PM2.5浓度在订阅者们指定的时间达到一定数值时分别进行告警
-   
+当PM2.5浓度在订阅者们**指定的时间**达到**一定数值**时分别进行告警。    
 ![示例3](http://ww3.sinaimg.cn/mw690/69e23056gw1fbdafftyowj20690b43yq.jpg)  ![示例2](http://ww3.sinaimg.cn/mw690/69e23056gw1fb8ous7x1aj20690b4gmd.jpg)  ![示例1](http://ww2.sinaimg.cn/mw690/69e23056gw1fb8ourtu4cj20690b43zq.jpg) 
 # 要求  
 PHP>=5.4  
