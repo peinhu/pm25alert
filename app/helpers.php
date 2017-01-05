@@ -64,12 +64,12 @@ if (! function_exists('getColorByPollutionLevel')) {
     function getColorByPollutionLevel($level)
     {
         switch($level){
-            case 1:$color = '#68CB00';break;
-            case 2:$color = '#F6E200';break;
-            case 3:$color = '#FB890F';break;
-            case 4:$color = '#DF2D00';break;
-            case 5:$color = '#B414BB';break;
-            case 6:$color = '#6F0474';break;
+            case 1:$color = '#00E400';break;
+            case 2:$color = '#FFFF00';break;
+            case 3:$color = '#FF7E00';break;
+            case 4:$color = '#FF0000';break;
+            case 5:$color = '#99004C';break;
+            case 6:$color = '#7E0023';break;
             case 42:$color = '#000000';break;
             default:$color = '#ffffff';break;
         }
