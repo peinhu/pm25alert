@@ -18,6 +18,8 @@ config/notification.php 设置通知方式
 config/contact.php 设置服务提供者的联系方式（可选）  
 
 # 说明   
+按PM2.5浓度而非AQI（空气质量指数）进行计算分级，分级标准参照国内标准，结果仅反映PM2.5的污染情况。   
+
 默认使用pm25.in提供的api，也可换用其它api，整理为core/DefaultData.php中的标准数据格式即可。   
 
 默认使用email进行通知，也可自行扩展其它通知服务。
