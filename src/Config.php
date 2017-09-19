@@ -5,8 +5,9 @@ namespace Core;
 class Config
 {
     protected static $_notification;
-    protected static $_users;
+    protected static $_subscribers;
     protected static $_contact;
+    protected static $_app;
     protected static $type_singleton;
 
     # 单例模式

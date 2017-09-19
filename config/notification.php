@@ -6,17 +6,17 @@ return [
 
     'email' => [
 
-        'driver' => '',//'smtp'
+        'driver' => '', # 邮件协议，如'smtp'
 
-        'host' => '',//'smtp.qq.com'
+        'host' => '', # 提供服务的host,如'smtp.qq.com'
 
-        'username' => '',//'1234567@qq.com'
+        'port' => 25, # 提供服务的端口，如25
 
-        'password' => '',//'your password'
+        'username' => '', # 邮箱的用户名，如'1234567@qq.com'
 
-        'port' => 25,//25
+        'password' => '', # 邮箱的密码，如'your password'
 
-        'encryption' => '',//'tls'
+        'encryption' => '', # 加密方式，如'tls'
 
     ],
 
