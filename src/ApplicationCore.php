@@ -4,8 +4,6 @@ namespace Core;
 
 use Core\DataProvider\DataProvider;
 use Core\Notification\Notification;
-use Monolog\Handler\StreamHandler;
-use Monolog\Logger;
 
 class ApplicationCore
 {
@@ -21,14 +19,13 @@ class ApplicationCore
         $this->subscribers = array_map(function ($subscribers) {
             return new Subscriber($subscribers);
         }, config('subscribers'));
-
     }
 
     protected function filter()
     {
         if ( ! config('app')->test_mode ) {
             $subscribers = array_filter($this->subscribers, [$this, 'filterByTime']); # 根据告警时间过滤
-        }else{
+        } else {
             $subscribers = $this->subscribers;
         }
 
@@ -41,7 +38,7 @@ class ApplicationCore
     {
         $response = $this->dataProvider->request($item->apiParams);
 
-        if ( $response->pollutionLevel >= $item->alertLevel ) {
+        if ( $response && $response->pollutionLevel >= $item->alertLevel ) {
 
             $item->response = $response;
 
@@ -67,14 +64,12 @@ class ApplicationCore
     {
         array_walk($this->notifiableList, function (&$notifiable) {
 
-            $log = new Logger('Notification');
-            $log->pushHandler(new StreamHandler(__DIR__ . '/../log/notification.log', Logger::INFO));
-            $log->addInfo('准备发送通知', ['name' => $notifiable->name, 'email' => $notifiable->email]);
+            Log::readyToNotify($notifiable->name, $notifiable->email);
 
-            if ( ! config('app')->test_mode ) {
-                if ( $this->notification->send($notifiable) ) {
-                    $log->addInfo('成功发送通知', ['name' => $notifiable->name, 'email' => $notifiable->email]);
-                }
+            if ( ! config('app')->test_mode && $this->notification->send($notifiable) ) {
+
+                Log::successToNotify($notifiable->name, $notifiable->email);
+
             }
 
         });

@@ -2,6 +2,8 @@
 
 namespace Core\DataProvider;
 
+use Core\Log;
+
 class Pm25inDataProvider implements DataProvider
 {
     public $aqi;//空气质量
@@ -13,7 +15,17 @@ class Pm25inDataProvider implements DataProvider
 
     public function request($params)
     {
-        $contents = file_get_contents('http://www.pm25.in/api/querys/aqis_by_station.json?token=5j1znBVAsnSf5xQyNQyq&station_code=' . $params->station_code);
+        $url = 'http://www.pm25.in/api/querys/aqis_by_station.json?token=5j1znBVAsnSf5xQyNQyq&station_code=' . $params->station_code;
+
+        $context = stream_context_create(['http' => ['method' => "GET", 'timeout' => 10]]);
+
+        $contents = @file_get_contents($url, false, $context);
+
+        if ( ! $contents ) {
+            Log::failToRequest($url);
+
+            return false;
+        }
 
         $this->format($contents);
 
@@ -38,8 +50,7 @@ class Pm25inDataProvider implements DataProvider
 
         $this->timePoint = $sourceDataObj->time_point;
 
-        $this->pollutionLevel = call_user_func([config('app')->standard,'getLevelByIndex'],$sourceDataObj->pm2_5);
-
+        $this->pollutionLevel = call_user_func([config('app')->standard, 'getLevelByIndex'], $sourceDataObj->pm2_5);
 
     }
 

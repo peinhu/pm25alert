@@ -13,9 +13,10 @@ return [
         'alert_level' => 1, # 告警等级，1~6或42(即大于6的情况)，大于等于此数值才会触发告警
 
         'api_params' => [ # 数据源api的请求参数
-            # 请求http://www.pm25.in/api/querys/station_names.json?token=5j1znBVAsnSf5xQyNQyq&city={CITY_NAME}，{CITY_NAME}为城市名，可得到城市中所有监测点及其编号{STATION_CODE}，将其作为station_code对应的值
+            # 如使用pm25.in（默认）的api，请求http://www.pm25.in/api/querys/station_names.json?token=5j1znBVAsnSf5xQyNQyq&city={CITY_NAME}，{CITY_NAME}为城市名，可得到城市中所有监测点及其编号{STATION_CODE}，将其作为station_code的值
             'station_code' => '',
         ],
+
 
     ],
 
